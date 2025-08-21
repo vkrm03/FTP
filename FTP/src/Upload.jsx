@@ -50,7 +50,7 @@ export default function Upload() {
   };
 
   const handleShare = () => {
-    const shareLink = `https://ftp-gb1w.onrender.com/download?shareId=${shareId}&password=${password}`;
+    const shareLink = `https://ftp-sent-recive.vercel.app/download?shareId=${shareId}&password=${password}`;
     navigator.clipboard.writeText(shareLink).then(() => {
       toast.success("Share link copied!");
     });
