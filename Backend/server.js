@@ -1,5 +1,6 @@
 const express = require('express')
-const cors = require('cors')
+const cors = require('cors');
+const dotenv = require('dotenv')
 const multer = require('multer')
 const { createClient } = require('@supabase/supabase-js')
 const { v4: uuidv4 } = require('uuid')
@@ -7,15 +8,17 @@ const { v4: uuidv4 } = require('uuid')
 const app = express()
 app.use(cors())
 app.use(express.json())
+dotenv.config()
 
 const supabaseUrl = "https://xyqlnxrzhoucfagoglgr.supabase.co"
-const supabaseKey = "YOUR_SUPABASE_KEY"
+const supabaseKey = process.env.API_KEY
 const supabase = createClient(supabaseUrl, supabaseKey)
 
 const storage = multer.memoryStorage()
 const upload = multer({ storage })
 
 const fileStore = {}
+
 
 app.post('/upload', upload.single('file'), async (req, res) => {
   try {
@@ -41,7 +44,8 @@ app.post('/upload', upload.single('file'), async (req, res) => {
       } catch (err) {
         console.error('Error deleting expired file:', err)
       }
-    }, 60 * 1000)
+    }, 60 * 60 * 1000)
+
 
     return res.json({ shareId })
   } catch (err) {
