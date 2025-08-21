@@ -1,0 +1,134 @@
+.upload-container {
+  max-width: 800px;
+  margin: 90px auto;
+  padding: 25px;
+  border-radius: 15px;
+  background: #fafafa;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.upload-container .title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #7a5fdb;
+}
+
+/* Drag & drop */
+.drop-zone {
+  border: 2px dashed #bbb;
+  border-radius: 12px;
+  padding: 50px 20px;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.upload-title {
+  font-size: 2.5rem;
+  color: #7a5fdb;
+}
+
+.drop-zone.active {
+  background: #e8f0fe;
+  border-color: #7a5fdb;
+}
+
+.file-name {
+  font-weight: 600;
+  color: #7a5fdb;
+  margin-bottom: 40px;
+}
+
+.hidden-input {
+  display: none;
+}
+
+.choose-btn {
+  padding: 10px 18px;
+  margin-top: 10px;
+  background: #7a5fdb;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.choose-btn:hover {
+  background: #6939c1;
+}
+
+/* Input & button */
+.input-text {
+  width: 90%;
+  max-width: 400px;
+  padding: 12px;
+  margin: 15px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+}
+
+.input-text:focus {
+  border-color: #7a5fdb;
+  box-shadow: 0 0 6px rgba(122, 95, 219, 0.3);
+}
+
+.btn {
+  width: 90%;
+  max-width: 400px;
+  padding: 14px;
+  margin-top: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #7a5fdb, #5941a9);
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.result {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+.copy-btn, .share-btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.copy-btn {
+  background: #7a5fdb;
+  color: #fff;
+}
+
+.copy-btn:hover {
+  background: #6939c1;
+}
+
+.share-btn {
+  background: #28a745;
+  color: #fff;
+}
+
+.share-btn:hover {
+  background: #1e7e34;
+}

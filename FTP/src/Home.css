@@ -1,0 +1,158 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(120deg, #f0f4ff, #f9f9ff);
+}
+
+.home-container {
+  text-align: center;
+}
+
+
+.hero-section {
+  margin-bottom: 50px;
+}
+
+.home-title {
+  font-size: 3rem;
+  color: #7a5fdb;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.home-subtitle {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.hero-note {
+  font-size: 0.95rem;
+  color: #888;
+  margin-top: 10px;
+}
+
+/* Card Container */
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Home Card */
+.home-card {
+  background: white;
+  width: 300px;
+  border-radius: 20px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  padding: 30px 20px;
+  text-align: center;
+  position: relative;
+}
+
+.home-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+}
+
+.icon-container {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7a5fdb, #6a5acd);
+  color: white;
+  font-size: 2.5rem;
+  transition: transform 0.3s ease;
+}
+
+.home-card:hover .icon-container {
+  transform: scale(1.15) rotate(-10deg);
+}
+
+.home-card h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.home-card p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+.upload-card .icon-container {
+  background: linear-gradient(135deg, #007bff, #4dabf7);
+}
+
+.download-card .icon-container {
+  background: linear-gradient(135deg, #28a745, #5ac18e);
+}
+
+.features-section {
+  margin-bottom: 40px;
+}
+
+.features-section h3 {
+  font-size: 2rem;
+  color: #7a5fdb;
+  margin-bottom: 30px;
+}
+
+.features-grid {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.feature-card {
+  background: #ffffff;
+  padding: 25px 20px;
+  width: 220px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+.feature-icon {
+  font-size: 2.2rem;
+  color: #7a5fdb;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+  transform: rotate(-10deg) scale(1.1);
+  color: #5941a9;
+}
+
+.feature-card h4 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.feature-card p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .card-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
