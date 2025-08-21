@@ -27,7 +27,7 @@ export default function Download() {
 
   const fetchFileInfo = async (id, pwd) => {
     try {
-      const res = await fetch("http://localhost:5000/download", {
+      const res = await fetch("https://ftp-gb1w.onrender.com/download", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ shareId: id, password: pwd }),

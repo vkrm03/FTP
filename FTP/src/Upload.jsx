@@ -26,7 +26,7 @@ export default function Upload() {
     form.append("password", password);
 
     try {
-      const res = await fetch("http://localhost:5000/upload", {
+      const res = await fetch("https://ftp-gb1w.onrender.com/upload", {
         method: "POST",
         body: form,
       });
@@ -50,7 +50,7 @@ export default function Upload() {
   };
 
   const handleShare = () => {
-    const shareLink = `http://localhost:5173/download?shareId=${shareId}&password=${password}`;
+    const shareLink = `https://ftp-gb1w.onrender.com/download?shareId=${shareId}&password=${password}`;
     navigator.clipboard.writeText(shareLink).then(() => {
       toast.success("Share link copied!");
     });
