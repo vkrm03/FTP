@@ -10,6 +10,7 @@ export default function Download() {
   const [fileName, setFileName] = useState("");
   const [fileType, setFileType] = useState("");
   const [readyToDownload, setReadyToDownload] = useState(false);
+  const [downloading, setDownloading] = useState(false);
 
   const location = useLocation();
 
@@ -32,8 +33,8 @@ export default function Download() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ shareId: id, password: pwd }),
       });
-
       const data = await res.json();
+
       if (data.downloadUrl) {
         setFileUrl(data.downloadUrl);
 
@@ -42,6 +43,7 @@ export default function Download() {
         setFileType(urlParts.split(".").pop().toLowerCase());
 
         setReadyToDownload(true);
+        toast.info("File ready to download!");
       } else {
         toast.error(data.detail || "Invalid ID or Password");
       }
@@ -55,6 +57,9 @@ export default function Download() {
     if (!fileUrl) return;
 
     try {
+      setDownloading(true);
+      toast.info("Starting download...");
+
       const res = await fetch(fileUrl);
       if (!res.ok) throw new Error("Failed to fetch file");
 
@@ -65,10 +70,13 @@ export default function Download() {
       document.body.appendChild(a);
       a.click();
       a.remove();
-      toast.success("Download started!");
+
+      toast.success("Download complete!");
     } catch (err) {
       console.error(err);
       toast.error("Failed to download file");
+    } finally {
+      setDownloading(false);
     }
   };
 
@@ -132,9 +140,9 @@ export default function Download() {
         <button
           onClick={handleDownload}
           className="download-btn"
-          disabled={!readyToDownload}
+          disabled={!readyToDownload || downloading}
         >
-          Download
+          {downloading ? "Downloading..." : "Download"}
         </button>
       </div>
     </div>
