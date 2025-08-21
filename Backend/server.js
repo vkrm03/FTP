@@ -4,6 +4,7 @@ const dotenv = require('dotenv')
 const multer = require('multer')
 const { createClient } = require('@supabase/supabase-js')
 const { v4: uuidv4 } = require('uuid')
+const rateLimit = require('express-rate-limit')
 
 const app = express()
 app.use(cors())
@@ -18,6 +19,14 @@ const storage = multer.memoryStorage()
 const upload = multer({ storage })
 
 const fileStore = {}
+
+const uploadLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000,
+  max: 3,
+  message: { detail: 'Upload limit reached. Try again later.' },
+  standardHeaders: true,
+  legacyHeaders: false,
+})
 
 
 app.post('/upload', upload.single('file'), async (req, res) => {

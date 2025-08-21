@@ -11,37 +11,45 @@ export default function Upload() {
   const MAX_SIZE = 50 * 1024 * 1024;
 
   const handleUpload = async () => {
-    if (!file || !password) {
-      toast.warn("Please select a file and enter a password");
+  if (!file || !password) {
+    toast.warn("Please select a file and enter a password");
+    return;
+  }
+
+  if (file.size > MAX_SIZE) {
+    toast.error("File size must be less than 50 MB");
+    return;
+  }
+
+  const form = new FormData();
+  form.append("file", file);
+  form.append("password", password);
+
+  try {
+    const res = await fetch("https://ftp-gb1w.onrender.com/upload", {
+      method: "POST",
+      body: form,
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      toast.error(data.detail || "Upload failed");
       return;
     }
 
-    if (file.size > MAX_SIZE) {
-      toast.error("File size must be less than 50 MB");
-      return;
+    if (data.shareId) {
+      toast.success("File uploaded successfully!");
+      setShareId(data.shareId);
+    } else {
+      toast.error(data.detail || "Upload failed");
     }
+  } catch (err) {
+    console.error(err);
+    toast.error("Server error. Try again later.");
+  }
+};
 
-    const form = new FormData();
-    form.append("file", file);
-    form.append("password", password);
-
-    try {
-      const res = await fetch("https://ftp-gb1w.onrender.com/upload", {
-        method: "POST",
-        body: form,
-      });
-
-      const data = await res.json();
-      if (data.shareId) {
-        toast.success("File uploaded successfully!");
-        setShareId(data.shareId);
-      } else {
-        toast.error(data.detail || "Upload failed");
-      }
-    } catch (err) {
-      toast.error("Server error. Try again later.");
-    }
-  };
 
   const handleCopy = () => {
     navigator.clipboard.writeText(shareId).then(() => {
